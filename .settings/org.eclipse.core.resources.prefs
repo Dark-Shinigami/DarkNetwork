@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//src/de/psych/main/Main.java=UTF-8
+encoding//src/de/psych/main/commands/ChatClear.java=UTF-8
+encoding//src/de/psych/main/commands/Motd.java=UTF-8
+encoding//src/de/psych/main/commands/Msg.java=UTF-8
+encoding//src/de/psych/main/events/MuteEvent.java=UTF-8
+encoding//src/de/psych/main/events/Reload.java=UTF-8

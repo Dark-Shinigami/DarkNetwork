@@ -1,0 +1,28 @@
+name: Easy-Lobby
+author: PsychDev
+version: 1.4.3
+website: http://website.de
+
+main: de.psych.main.Main
+commands:
+  cc:
+    description: Leere den Chat.
+    usage: </cc [Name]>
+  motd:
+    description: Setzt die MotD
+    usage: </motd [Nachicht]>
+  msg:
+  msgspy:
+  punkte:
+  build:
+  warp:
+  login:
+    usage: /command
+    aliases: [l]
+  register:
+    description: Regestration Command.
+    usage: /register <Password> <Password>
+    alias: [reg]
+  mute:
+  rank:
+  hub:
