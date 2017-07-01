@@ -15,8 +15,8 @@ public class ServerPing implements Listener {
 	@EventHandler
 	public void onInteract(ServerListPingEvent e){
 		
-		File file = new File("plugins//E-Lobby//Motd.yml");
-		File ordner = new File("plugins//E-Lobby");
+		File file = new File("plugins//DarkNetwork//Motd.yml");
+		File ordner = new File("plugins//DarkNetwork");
 		
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 		
@@ -27,7 +27,7 @@ public class ServerPing implements Listener {
 		if(!(file.exists())){
 			try {
 				file.createNewFile();
-				cfg.set("Motd", "&3Erebos Development");
+				cfg.set("Motd", "&3DarkException");
 				cfg.save(file);
 			} catch (IOException d) {
 			

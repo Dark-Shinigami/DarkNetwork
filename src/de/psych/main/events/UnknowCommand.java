@@ -8,8 +8,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.help.HelpTopic;
 
-import de.psych.main.Main;
-
 public class UnknowCommand implements Listener {
 
 	public void onEnable() {
@@ -27,9 +25,11 @@ public class UnknowCommand implements Listener {
 			HelpTopic topic = Bukkit.getServer().getHelpMap().getHelpTopic(msg);
 			if(topic == null) {
 				
-				p.sendMessage(Main.prI);
-				p.sendMessage("");
-				p.sendMessage(Main.head+"§7Der Command §c"+msg+" §7ist uns Unbekannt.");
+				
+				p.sendMessage("§6>> §eDarkNetwork §6| §bAllgemeine Hilfe:");
+				p.sendMessage("§b/hub §7Zurück zur Haupt-Lobby");
+				p.sendMessage("§b/msg §7Befehle für das MSG-System");
+				p.sendMessage("§b/ping §7Zeigt deinen Ping");
 				e.setCancelled(true);
 			}
 			

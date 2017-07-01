@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/DeadlySinChaos/Desktop/Desktop/0110110/Netzwerk/_proxy/BungeeCord.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/DeadlySinChaos/Desktop/0110110/spigot-latest.jar"/>
+	<classpathentry kind="lib" path="lib/ScoreboardAPI.jar"/>
+	<classpathentry kind="lib" path="lib/VIPHide.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DeadlySinChaos/Desktop/Desktop/0110110/Netzwerk/lobby/plugins/PermissionsEx-1.23.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/DeadlySinChaos/Desktop/Desktop/0110110/Netzwerk/lobby/spigot.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -7,8 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
-import de.psych.main.Main;
-
 public class ChatClear implements CommandExecutor{
 	
 	@Override
@@ -20,15 +18,14 @@ public class ChatClear implements CommandExecutor{
 		}
 		Player p = (Player) sender;
 		
-		if(!(p.hasPermission("elobby.cc"))){
-			p.sendMessage(Main.prefixG+"§cAcces Denied!");
+		if(!(p.hasPermission("dnetwork.cc"))){
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Keine Berechtigung.");
 			return true;
 		}
 	if(args.length == 0){	
 		for(int i=0; i != 200; i++){
 			Bukkit.broadcastMessage("");
 		}
-		Bukkit.broadcastMessage(Main.prefixG+"   §7|   §a§oInformation");
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage("");
@@ -37,13 +34,12 @@ public class ChatClear implements CommandExecutor{
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage("");
-		Bukkit.broadcastMessage("§7§l[§c➤§7§l] §7Der Chat wurde von §c§o"+p.getName()+" §7geleert.");
+		Bukkit.broadcastMessage("");
+		Bukkit.broadcastMessage("§6>> §eDarkNetwork §6| §7Der Chat wurde geleert.");
 		return true;
 	}else if(args.length == 1){
-		if(!(p.hasPermission("elobby.cco"))){
-			p.sendMessage(Main.prefixG);
-			p.sendMessage("");
-			p.sendMessage(Main.np);
+		if(!(p.hasPermission("dnetwork.cco"))){
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Keine Berechtigung.");
 			return true;
 		}
 		try{
@@ -52,22 +48,16 @@ public class ChatClear implements CommandExecutor{
 			for(int i = 0; i != 200; i++){
 				a.sendMessage("");
 			}
-			a.sendMessage(Main.prI);
-			a.sendMessage("");
-			a.sendMessage(Main.head+"§7Dein Chat wurde von §c"+p.getName()+" §7geleert.");
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§7Du hast den Chat von §c"+a.getName()+" §7geleert.");
+			a.sendMessage("§6>> §eDarkNetwork §6| §7Dein Chat wurde geleert.");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Du hast den Chat von §b"+a.getName()+" §7geleert.");
 			return true;
 		}catch (NullPointerException e){
-			p.sendMessage(Main.prI);
-			p.sendMessage("§7§l[§c➤§7§l] §7Der angegebene Spieler ist §coffline§7!");
-			p.sendMessage("§7§l[§c➤§7§l] §7Eingabe: §a"+args[0]);
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Der angegebene Spieler '§b"+args[0]+"§7' ist offline.");
 			return true;
 		}
 	} else {
 		
-		p.sendMessage(Main.prefixG+"Benutzte /cc [Spieler]");
+		p.sendMessage("§6>> §eDarkNetwork §6| §7Bitte nutze §b/cc <Spieler Name>§7.");
 	}
 		
 		

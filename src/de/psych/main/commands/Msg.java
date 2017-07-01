@@ -11,7 +11,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import de.psych.main.Main;
 
 public class Msg implements CommandExecutor{
 
@@ -26,7 +25,7 @@ public class Msg implements CommandExecutor{
 				
 				if(a == cs){
 				
-					cs.sendMessage("Es müssen verschiedene Spieler angegeben sein!");
+					cs.sendMessage("§6>> §eMSG §6| §7Es müssen verschiedene Spieler angegeben sein.");
 					
 				}
 				
@@ -41,13 +40,13 @@ public class Msg implements CommandExecutor{
 				
 				} catch (NullPointerException e){
 				
-					cs.sendMessage("Der Spieler ist offline!");
+					cs.sendMessage("§6>> §eMSG §6| §7Der angegebene Spieler ist §boffline§7.");
 					
 				}
 				
 			} else {
 		
-				cs.sendMessage("Bitte benutze /msg <Spieler> <Nachicht>");
+				cs.sendMessage("§6>> §eDarkNetwork §6| §7Bitte benutze §b/msg <Spieler> <Nachricht>§7.");
 				
 			}
 			return true;
@@ -62,9 +61,7 @@ public class Msg implements CommandExecutor{
 			try{
 			
 			if(a == p){
-				p.sendMessage(Main.prefixG);
-				p.sendMessage("");
-				p.sendMessage(Main.head+"Er müssen verschiedene Spieler angegeben sein!");
+				p.sendMessage("§6>> §eDarkNetwork §6| §7Es müssen verschiedene Spieler angegeben sein.");
 				return true;
 			}
 			
@@ -77,8 +74,8 @@ public class Msg implements CommandExecutor{
 			a.sendMessage("§7[§6MSG§7] §9"+p.getName()+"§6 ➤§9 You §6>> §b"+msg);
 			
 			for(Player all : Bukkit.getOnlinePlayers()){
-				File ordner = new File("plugins//Pagian");
-				File file = new File("plugins//Pagian//MSGSpyOption");
+				File ordner = new File("plugins//DarkNetwork");
+				File file = new File("plugins//DarkNetwork//MSGSpyOption");
 				
 				if(!(ordner.exists())){
 					ordner.mkdir();
@@ -103,15 +100,12 @@ public class Msg implements CommandExecutor{
 			}
 			
 			} catch (NullPointerException e){
-				p.sendMessage(Main.prefixG);
-				p.sendMessage(Main.head+"Der Spieler ist offline!");
+				p.sendMessage("§6>> §eDarkNetwork §6| §7Der Spieler ist offline.");
 				return true;
 			}
 			
 		} else {
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"Bitte benutze /msg <Spieler> <Nachicht>");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Bitte benutze §b/msg <Spieler> <Nachricht>§7.");
 			return true;
 		}
 		

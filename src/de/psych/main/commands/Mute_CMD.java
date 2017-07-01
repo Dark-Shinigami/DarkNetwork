@@ -10,7 +10,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import de.psych.main.Main;
 
 public class Mute_CMD implements CommandExecutor{
 
@@ -18,35 +17,27 @@ public class Mute_CMD implements CommandExecutor{
 	public boolean onCommand(CommandSender cs, Command cmd, String cmdlabel, String[] args) {
 		
 		if(cs instanceof ConsoleCommandSender){
-			cs.sendMessage("Du musst ein Spieler sein.");
+			cs.sendMessage("You are no Player!");
 			return true;
 		}
 		Player p = (Player) cs;
 		
-		if(!(p.hasPermission("elobby.mute"))){
+		if(!(p.hasPermission("dnetwork.mute"))){
 			
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.np);
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Keine Berechtigung.");
 			return true;
 		}
 		
 		if(args.length == 1){
 			if(isMuted(args[0])){
 			mute(args[0],false);
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§cDer Spieler §3"+args[0]+" §cwurde entmuted!");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Der Spieler §b"+args[0]+" §7wurde entmuted.");
 		} else {
 			mute(args[0],true);
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§aDer Spieler §3"+args[0]+" §awurde gemuted!");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Der Spieler §b"+args[0]+" §7wurde gemuted.");
 		}
 		}else {
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§c/mute <Spieler>");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Bitte nutze §b/mute <Spieler>§7.");
 		
 		}
 		return true;
@@ -55,8 +46,8 @@ public class Mute_CMD implements CommandExecutor{
 	}
 	
 	public static boolean isMuted(String playername){
-		File ordner = new File ("plugins//E-Lobby");
-		File file = new File("plugins//E-Lobby//mute.yml");
+		File ordner = new File ("plugins//DarkNetwork");
+		File file = new File("plugins//DarkNetwork//mute.yml");
 		
 		if(!(ordner.exists())){
 			ordner.mkdir();
@@ -75,8 +66,8 @@ public class Mute_CMD implements CommandExecutor{
 	
 	
 	public static void mute(String playername, boolean b){
-		File ordner = new File ("plugins//E-Lobby");
-		File file = new File("plugins//E-Lobby//mute.yml");
+		File ordner = new File ("plugins//DarkNetwork");
+		File file = new File("plugins//DarkNetwork//mute.yml");
 		
 		if(!(ordner.exists())){
 			ordner.mkdir();

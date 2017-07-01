@@ -10,7 +10,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import de.psych.main.Main;
 
 public class Msgspy implements CommandExecutor{
 
@@ -22,8 +21,8 @@ public class Msgspy implements CommandExecutor{
 			return true;
 		}
 		
-		File ordner = new File("plugins//E-Lobby");
-		File file = new File("plugins//E-Lobby//MSGSpyOption");
+		File ordner = new File("plugins//DarkNetwork");
+		File file = new File("plugins//DarkNetwork//MSGSpyOption");
 		
 		if(!(ordner.exists())){
 			ordner.mkdir();
@@ -43,12 +42,10 @@ public class Msgspy implements CommandExecutor{
 		boolean spy = cfg.getBoolean(p.getName());
 		
 		if(spy == true){
-			p.sendMessage(Main.prefixG);
-			p.sendMessage(Main.head+"Die Überwachung der Privaten Nachichten wurde §cdeaktiviert§7.");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Die Überwachung der Privaten Nachrichten wurde §bdeaktiviert§7.");
 			cfg.set(p.getName(), false);
 		} else {
-			p.sendMessage(Main.prefixG);
-			p.sendMessage(Main.head+"Die Überwachung der Privaten Nachichten wurde jetzt §aaktiviert§7.");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Die Überwachung der Privaten Nachrichten wurde §baktiviert§7.");
 			cfg.set(p.getName(), true);
 		}
 		try {

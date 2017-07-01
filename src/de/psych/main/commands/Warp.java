@@ -14,7 +14,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import de.psych.main.Main;
 
 public class Warp implements CommandExecutor{
 
@@ -22,7 +21,7 @@ public class Warp implements CommandExecutor{
 	public boolean onCommand(CommandSender cs, Command cmd, String cmdlabel, String[] args) {
 		
 		if(cs instanceof ConsoleCommandSender){
-			cs.sendMessage("Du musst ein Spieler sein.");
+			cs.sendMessage("You are no Player!");
 			return true;
 		}
 		Player p = (Player) cs;
@@ -30,7 +29,7 @@ public class Warp implements CommandExecutor{
 		if(args.length == 1){
 			     tpWarp(p, args[0]);
 		}else if(args.length == 2){
-			if(p.hasPermission("elobby.setwarp")){
+			if(p.hasPermission("dnetwork.setwarp")){
 				if(args[0].equalsIgnoreCase("set")){
 					setWarp(args[1],p);
 					
@@ -38,20 +37,17 @@ public class Warp implements CommandExecutor{
 					delWarp(args[1],p);
 					
 				} else {
-					p.sendMessage(Main.prI);
-					p.sendMessage("");
-					p.sendMessage(Main.head+"§7Bitte benutze §c/warp <set/del> <Name>");
+					p.sendMessage("§6>> §eDarkNetwork §6| §7Bitte nutze §b/warp <set/del> <Name>§7.");
+					return true;
 				}
 			}else{
-				p.sendMessage(Main.prI);
-				p.sendMessage("");
-				p.sendMessage(Main.head+Main.np);
+				p.sendMessage("§6>> §eDarkNetwork §6| §7Keine Berechtigung.");
+				return true;
 			}
 			
 		} else {
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§7Bitte benutze §c/warp <Name>");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Bitte nutze §b/warp <Name>§7.");
+			return true;
 		}
 		
 		return true;
@@ -59,8 +55,8 @@ public class Warp implements CommandExecutor{
 	}
 	
 	public static void setWarp(String WarpName, Player p){
-		File ordner = new File("plugins//E-Lobby//Warps");
-		File file = new File("plugins//E-Lobby//Warps//"+ WarpName.toLowerCase()+".yml");
+		File ordner = new File("plugins//DarkNetwork//Warps");
+		File file = new File("plugins//DarkNetwork//Warps//"+ WarpName.toLowerCase()+".yml");
 		
 		if(!ordner.exists()){
 			ordner.mkdir();
@@ -89,22 +85,19 @@ public class Warp implements CommandExecutor{
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
-		p.sendMessage(Main.prI);
-		p.sendMessage("");
-		p.sendMessage(Main.head+"§7Der Warp §3"+WarpName.toLowerCase()+" §7wurde gesetzt!");
+	  p.sendMessage("§6>> §eDarkNetwork §6| §7Der Warp §b"+WarpName.toLowerCase()+" §7wurde erfolgreich gesetzt.");
 	}
 	
 	public static void tpWarp(Player p, String WarpName){
-		File ordner = new File("plugins//E-Lobby//Warps");
-		File file = new File("plugins//E-Lobby//Warps//"+ WarpName.toLowerCase()+".yml");
+		File ordner = new File("plugins//DarkNetwork//Warps");
+		File file = new File("plugins//DarkNetwork//Warps//"+ WarpName.toLowerCase()+".yml");
 		if(!ordner.exists()){
 			ordner.mkdir();
 		}
 
 		if(!file.exists()){
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§7Der Warp existiert nicht!");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Der angegebene Warp Punkt Existiert nicht.");
+			return;
 		}
 		
 		FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
@@ -120,22 +113,17 @@ public class Warp implements CommandExecutor{
 				cfg.getDouble("Z"),
 				(float) yaw,
 				(float) pitch));
-		p.sendMessage("§7Teleported to §3"+WarpName.toLowerCase()+"§7.");
 	}
 	
 	public static void delWarp(String WarpName, Player p){
 
-		File file = new File("plugins//E-Lobby//Warps//"+ WarpName.toLowerCase()+".yml");
+		File file = new File("plugins//DarkNetwork//Warps//"+ WarpName.toLowerCase()+".yml");
 		
 		if(file.exists()){
 			file.delete();
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§7Der Warp §3"+WarpName.toLowerCase()+" §7wurde gelöscht!");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Der Warp §b"+WarpName.toLowerCase()+" §7wurde erfolgreich gelöscht.");
 		} else {
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§7Der Warp existiert nicht!");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Der angegebene Warp Punkt Existiert nicht.");
 		}
 	}
 }

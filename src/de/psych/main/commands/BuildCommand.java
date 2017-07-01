@@ -19,30 +19,24 @@ public class BuildCommand implements CommandExecutor{
 		
 		Player p = (Player) sender;
 		
-	if(p.hasPermission("elobby.build")){
+	if(p.hasPermission("dnetwork.build")){
 		if(Main.building.contains(p)){
 		Main.building.remove(p);
 		Main.moveItems.remove(p);
-		p.sendMessage(Main.prI);
-		p.sendMessage("");
-		p.sendMessage(Main.head + "§7You §cleft §7the Build Mode!");
+		p.sendMessage("§6>> §eDarkNetwork §6| §7Du hast den §bBuild Mode §7verlassen.");
 		return true;
 		}else{
 	if(!Main.building.contains(p)){
 				Main.building.add(p);
 				Main.moveItems.add(p);
-				p.sendMessage(Main.prI);
-				p.sendMessage("");
-				p.sendMessage(Main.head + "§7You §aentered §7the Build Mode!");
+				p.sendMessage("§6>> §eDarkNetwork §6| §7Du hast den §bBuild Mode §7betreten.");
 				return true;
 				}
 		}
 		return true;
 		
 	} else {
-		p.sendMessage(Main.prI);
-		p.sendMessage("");
-		p.sendMessage(Main.np);
+		p.sendMessage("§6>> §eDarkNetwork §6| §7Keine Berechtigung.");
 	}
 	return true;
 	}

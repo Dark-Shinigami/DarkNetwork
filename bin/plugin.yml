@@ -1,7 +1,7 @@
-name: P-Lobby
-author: PsychDev
-version: 1.4.3
-website: http://website.de
+name: DarkException
+author: DarkException
+version: 1.4.5
+website: http://DarkException.net
 
 main: de.psych.main.Main
 commands:
@@ -14,7 +14,10 @@ commands:
   msg:
   msgspy:
   punkte:
+    description: Punkte System
+    usage: /punkte <add/remove/set/enough>
   build:
+    aliases: [b]
   warp:
   login:
     usage: /command
@@ -24,5 +27,27 @@ commands:
     usage: /register <Password> <Password>
     alias: [reg]
   mute:
-  rank:
   hub:
+  ping:
+  staff:
+  staffchat:
+  sc:
+  permission:
+  gm1:
+    description: Setzt den Spielmodus auf Creative
+    aliases: [g1]
+    usage: /gm1 oder /g1
+  gm0:
+    description: Setzt den Spielmodus auf Survival und Heilt dich
+    aliases: [g0]
+    usage: /gm0 oder /g0
+  time:
+    description: Setzt die Ingame Zeit auf Day/Night
+    aliases: [z]
+  e:
+  world:
+  reset:
+  ban:
+  unban:
+  tempban:
+  check:

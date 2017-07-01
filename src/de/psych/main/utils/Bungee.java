@@ -5,7 +5,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.bukkit.entity.Player;
-
 import de.psych.main.Main;
 
 public class Bungee {
@@ -24,5 +23,6 @@ public class Bungee {
 		p.sendPluginMessage(m, "BungeeCord", b.toByteArray());
 		
 	}
+	
 	
 }

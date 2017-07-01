@@ -5,7 +5,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-import de.psych.main.Main;
 import de.psych.main.commands.Mute_CMD;
 
 public class MuteEvent implements Listener{
@@ -16,9 +15,7 @@ public class MuteEvent implements Listener{
 		
 		if(Mute_CMD.isMuted(p.getName())){
 			e.setCancelled(true);
-			p.sendMessage(Main.prI);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"§cDu kannst nicht schreiben.");
+			p.sendMessage("§cDu bist gemuted. Wende dich via /msg an einen Moderator.");
 		}
 		
 

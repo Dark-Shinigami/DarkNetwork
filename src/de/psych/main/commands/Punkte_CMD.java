@@ -11,7 +11,6 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 
-import de.psych.main.Main;
 
 public class Punkte_CMD implements CommandExecutor{
 
@@ -19,14 +18,14 @@ public class Punkte_CMD implements CommandExecutor{
 	public boolean onCommand(CommandSender cs, Command cmd, String cmdlabel, String[] args) {
 		
 		if(cs instanceof ConsoleCommandSender){
-			cs.sendMessage("Du musst ein Spieler sein.");
+			cs.sendMessage("You are no Player!");
 			return true;
 		}
 		Player p = (Player) cs;
 		
 		if(args.length == 3){
-			if(!(p.hasPermission("elobby.punkte"))){
-				p.sendMessage("§cKeine Rechte!");
+			if(!(p.hasPermission("dnetwork.punkte"))){
+				p.sendMessage("§6>> §eDarkNetwork §6| §7Keine Berechtigung.");
 				return true;
 			}
 			try{
@@ -34,52 +33,32 @@ public class Punkte_CMD implements CommandExecutor{
 				Player ap = Bukkit.getPlayer(args[1]);
 				
 				if(args[0].contains("add")){
-					p.sendMessage(Main.prP);
-					p.sendMessage("");
-					p.sendMessage(Main.head+"§7Dem Spieler §c"+ap.getName()+" §7wurden §3"+punkte+" §7Punkte §ahinzugefügt!");
-					ap.sendMessage(Main.prP);
-					ap.sendMessage("");
-					ap.sendMessage(Main.head+"§7Du hast §3"+punkte+" §7Punkte §aerhalten§7!");
+					p.sendMessage("§6>> §eDarkNetwork §6| §7Dem Spieler §b"+ap.getName()+" §7wurden §b"+punkte+" §7Punkte hinzugefügt.");
+					ap.sendMessage("§6>> §eDarkNetwork §6| §7Du hast §b"+punkte+" §7Punkte erhalten.");
 					addPunkte(ap, punkte);
 				}else if(args[0].contains("remove")){
-					p.sendMessage(Main.prP);
-					p.sendMessage("");
-					p.sendMessage(Main.head+"§7Dem Spieler §c"+ap.getName()+" §7wurden §3"+punkte+" §7Punkte §cabgezogen!");
+					p.sendMessage("§6>> §eDarkNetwork §6| §7Dem Spieler §b"+ap.getName()+" §7wurden §b"+punkte+" §7Punkte abgezogen.");
 					removePunkte(ap, punkte);
-					ap.sendMessage(Main.prP);
-					ap.sendMessage("");
-					ap.sendMessage(Main.head+"§7Dir wurden §3"+punkte+" §cabgezogen§7!");
+					ap.sendMessage("§6>> §eDarkNetwork §6| §7Dir wurden §b"+punkte+" §7Punkte abgezogen.");
 				}else if(args[0].contains("set")){
-					p.sendMessage(Main.prP);
-					p.sendMessage("");
-					p.sendMessage(Main.head+"§7Dem Spieler §c"+ap.getName()+" §7wurden die Punkte auf §3"+punkte+" §7gesetzt!");
+					p.sendMessage("§6>> §eDarkNetwork §6| §7Dem Spieler §b"+ap.getName()+" §7wurden die Punkte auf §b"+punkte+" §7gesetzt.");
 					setPunkte(ap, punkte);
-					ap.sendMessage(Main.prP);
-					ap.sendMessage("");
-					ap.sendMessage(Main.head+"§7Deine Punkte wurden auf §3"+punkte+" §7gesetzt!");
+					ap.sendMessage("§6>> §eDarkNetwork §6| §7Deine Punkte wurden auf §b"+punkte+" §7gesetzt.");
 				}else if(args[0].contains("enough")){
 					if(hasEnough(ap, punkte)){
-						p.sendMessage(Main.prP);
-						p.sendMessage("");
-						p.sendMessage(Main.head+"§7Hat genug!");
+						p.sendMessage("§6>> §eDarkNetwork §6| §7Hat genug Punkte.");
 					}else{
-						p.sendMessage(Main.prP);
-						p.sendMessage("");
-					p.sendMessage(Main.head+"§7Hat nicht genung!");
+						p.sendMessage("§6>> §eDarkNetwork §6| §7Hat nicht genug Punkte.");
 				}
 					
 				} else {
-					p.sendMessage(Main.prP);
-					p.sendMessage("");
-					p.sendMessage(Main.head+"§7Bitte gebe §3/punkte <add/remove/set/enough> <Spieler> <Punkte> §7an!");
+					p.sendMessage("§6>> §eDarkNetwork §6| §7Bitte nutze §b/punkte <add/remove/set/enough> <Spieler> <Punkte>§7.");
 				}
 					
 				}catch (NumberFormatException e){
-					p.sendMessage("§cDu musst eine Zahl angeben!");
+					p.sendMessage("§6>> §eDarkNetwork §6| §7Du musst eine Zahl angeben.");
 				}catch (NullPointerException e){
-					p.sendMessage(Main.prP);
-					p.sendMessage("");
-					p.sendMessage(Main.head+"§7Der Angegebene Spieler ist §cOffline§7!");
+					p.sendMessage("§6>> §eDarkNetwork §6| §7Der angegebene Spieler ist §boffline§7.");
 				}
 			
 	/*		if(hasEnough(p, 100) == true){
@@ -90,9 +69,7 @@ public class Punkte_CMD implements CommandExecutor{
 			*/
 			
 		} else {
-			p.sendMessage(Main.prP);
-			p.sendMessage("");
-			p.sendMessage(Main.head+"Du hast aktuell §c"+getPunkte(p)+" §cPunkte§7!");
+			p.sendMessage("§6>> §eDarkNetwork §6| §7Dein Aktueller Punktestand ist: "+getPunkte(p));
 		}
 		
 		return false;
@@ -101,8 +78,8 @@ public class Punkte_CMD implements CommandExecutor{
 	public static int getPunkte(Player player) {
 		int punkte = 0;
 		
-		File ordner = new File("plugins//E-Lobby");
-		File file = new File("plugins//E-Lobby//Punkte");
+		File ordner = new File("plugins//DarkNetwork");
+		File file = new File("plugins//DarkNetwork//Punkte");
 		
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 		
@@ -128,8 +105,8 @@ public class Punkte_CMD implements CommandExecutor{
 	
 	
 	public static void addPunkte(Player player, int punkte){
-		File ordner = new File("plugins//E-Lobby");
-		File file = new File("plugins//E-Lobby//Punkte");
+		File ordner = new File("plugins//DarkNetwork");
+		File file = new File("plugins//DarkNetwork//Punkte");
 		
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 		
@@ -160,8 +137,8 @@ public class Punkte_CMD implements CommandExecutor{
 	}
 	
 	public static void removePunkte(Player player, int punkte){
-		File ordner = new File("plugins//E-Lobby");
-		File file = new File("plugins//E-Lobby//Punkte");
+		File ordner = new File("plugins//DarkNetwork");
+		File file = new File("plugins//DarkNetwork//Punkte");
 		
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 		
@@ -209,8 +186,8 @@ public class Punkte_CMD implements CommandExecutor{
 		return hasEnough;
 	}
 	public static void setPunkte(Player player, int punkte){
-		File ordner = new File("plugins//E-Lobby");
-		File file = new File("plugins//E-Lobby//Punkte");
+		File ordner = new File("plugins//DarkNetwork");
+		File file = new File("plugins//DarkNetwork//Punkte");
 		
 		YamlConfiguration cfg = YamlConfiguration.loadConfiguration(file);
 		
